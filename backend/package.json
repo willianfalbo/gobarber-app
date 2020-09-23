@@ -5,9 +5,10 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
+    "prestart:dev": "yarn migration:run",
     "watch": "ts-node-dev --transpile-only --ignore node_modules src/server.ts",
     "watch:debug": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
-    "docker:db": "docker run --name barbershop-postgres -p 5432:5432 -e POSTGRES_PASSWORD=password -d postgres",
+    "docker:db": "docker-compose up --build",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "migration:add": "yarn typeorm migration:create -n ",
     "migration:run": "yarn typeorm migration:run",
