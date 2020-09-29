@@ -25,8 +25,10 @@ const schema = yup.object().shape({
 });
 
 const SignUp: React.FC = () => {
-  const { register, handleSubmit } = useForm<SignUpForm>({
+  const { register, handleSubmit, errors } = useForm<SignUpForm>({
     resolver: yupResolver(schema),
+    mode: 'onChange',
+    shouldFocusError: false,
   });
 
   const onSubmit = (data: SignUpForm) => console.log(data);
@@ -43,12 +45,14 @@ const SignUp: React.FC = () => {
             icon={FiUser}
             placeholder="Name"
             register={register}
+            error={errors?.name?.message}
           />
           <Input
             name="email"
             icon={FiMail}
             placeholder="Email"
             register={register}
+            error={errors?.email?.message}
           />
           <Input
             name="password"
@@ -56,6 +60,7 @@ const SignUp: React.FC = () => {
             placeholder="Password"
             type="password"
             register={register}
+            error={errors?.password?.message}
           />
           <Button type="submit">Register</Button>
         </form>

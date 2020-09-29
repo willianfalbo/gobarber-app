@@ -22,8 +22,10 @@ const schema = yup.object().shape({
 });
 
 const SignIn: React.FC = () => {
-  const { register, handleSubmit } = useForm<SignInForm>({
+  const { register, handleSubmit, errors } = useForm<SignInForm>({
     resolver: yupResolver(schema),
+    mode: 'onChange',
+    shouldFocusError: false,
   });
 
   const onSubmit = (data: SignInForm) => console.log(data);
@@ -39,6 +41,7 @@ const SignIn: React.FC = () => {
             icon={FiMail}
             placeholder="Email"
             register={register}
+            error={errors?.email?.message}
           />
           <Input
             name="password"
@@ -46,6 +49,7 @@ const SignIn: React.FC = () => {
             placeholder="Password"
             type="password"
             register={register}
+            error={errors?.password?.message}
           />
           <Button type="submit">SignIn</Button>
           <a href="#forgot-password">Forgot password?</a>
