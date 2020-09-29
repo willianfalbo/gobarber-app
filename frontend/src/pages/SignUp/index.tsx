@@ -1,62 +1,61 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers';
+import * as yup from 'yup';
+
 import { FiArrowLeft, FiMail, FiUser, FiLock } from 'react-icons/fi';
 import { Container, Content, Background } from './styles';
 import logoImg from '../../assets/logo.svg';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
+interface SignUpForm {
+  name: string;
+  email: string;
+  password: string;
+}
+
+const schema = yup.object().shape({
+  name: yup.string().min(3, 'At least 3 characters'),
+  email: yup
+    .string()
+    .required('Email is a required field')
+    .email('Must be a valid email'),
+  password: yup.string().min(6, 'At least 6 characters'),
+});
+
 const SignUp: React.FC = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { register, handleSubmit } = useForm<SignUpForm>({
+    resolver: yupResolver(schema),
+  });
 
-  const updateName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-  };
-
-  const updateEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
-
-  const updatePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('name', name);
-    console.log('email', email);
-    console.log('password', password);
-  };
+  const onSubmit = (data: SignUpForm) => console.log(data);
 
   return (
     <Container>
       <Background />
       <Content>
         <img src={logoImg} alt="Barbershop" />
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <h1>Sign Up</h1>
           <Input
             name="name"
             icon={FiUser}
             placeholder="Name"
-            value={name}
-            onChange={updateName}
+            register={register}
           />
           <Input
             name="email"
             icon={FiMail}
             placeholder="Email"
-            value={email}
-            onChange={updateEmail}
+            register={register}
           />
           <Input
             name="password"
             icon={FiLock}
             placeholder="Password"
             type="password"
-            value={password}
-            onChange={updatePassword}
+            register={register}
           />
           <Button type="submit">Register</Button>
         </form>
