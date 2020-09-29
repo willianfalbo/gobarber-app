@@ -1,0 +1,309 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2020-09-29T03:37:24.193Z",
+  "__export_source": "insomnia.desktop.app:v2020.3.3",
+  "resources": [
+    {
+      "_id": "req_fff3360a06a54093a51d1c6cddea9f0d",
+      "authentication": {},
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"will@gmail.com\",\n\t\"password\": \"password\"\n}"
+      },
+      "created": 1595550678202,
+      "description": "",
+      "headers": [
+        {
+          "id": "pair_dd47fd2af03a4310858564a88ebc8084",
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1595550678202,
+      "method": "POST",
+      "modified": 1600805289148,
+      "name": "Login",
+      "parameters": [],
+      "parentId": "fld_92f9925ecca4415bbb57ec88cb91cb1a",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "{{ base_url }}/auth/login",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_92f9925ecca4415bbb57ec88cb91cb1a",
+      "created": 1595548416365,
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1595548416365,
+      "modified": 1595548416365,
+      "name": "Auth",
+      "parentId": "wrk_3f24327018314df984ea783ed47bf7ca",
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_3f24327018314df984ea783ed47bf7ca",
+      "created": 1595301662662,
+      "description": "",
+      "modified": 1595301662662,
+      "name": "Barbershop",
+      "parentId": null,
+      "scope": null,
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_eef6b12a88b84173b8c6bfd5389dde2b",
+      "authentication": {
+        "disabled": false,
+        "token": "{{ token }}",
+        "type": "bearer"
+      },
+      "body": {
+        "mimeType": "multipart/form-data",
+        "params": [
+          {
+            "description": "",
+            "fileName": "/home/willian/Pictures/willian-profile.jpeg",
+            "id": "pair_5007d564fc6d4ea98590f16b1cc05f09",
+            "name": "file",
+            "type": "file",
+            "value": ""
+          }
+        ]
+      },
+      "created": 1595562583830,
+      "description": "",
+      "headers": [
+        {
+          "id": "pair_bf8ce2a3bce243adb4004a5418235e5f",
+          "name": "Content-Type",
+          "value": "multipart/form-data"
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1595562583830,
+      "method": "PATCH",
+      "modified": 1600805276833,
+      "name": "Update Avatar",
+      "parameters": [],
+      "parentId": "fld_c7545358ded148be9185d8c839d70b25",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "{{ base_url }}/users/avatar",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_c7545358ded148be9185d8c839d70b25",
+      "created": 1595548411565,
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1595548411565,
+      "modified": 1595548411565,
+      "name": "Users",
+      "parentId": "wrk_3f24327018314df984ea783ed47bf7ca",
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_17f3260409b8404aa2712ae1ee6f307c",
+      "authentication": {},
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Willian\",\n\t\"email\": \"will@gmail.com\",\n\t\"password\": \"password\"\n}"
+      },
+      "created": 1595536916094,
+      "description": "",
+      "headers": [
+        {
+          "id": "pair_4017df31a87b4b078d210e244dcc4f00",
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1595548410425.5,
+      "method": "POST",
+      "modified": 1600805224316,
+      "name": "Create User",
+      "parameters": [],
+      "parentId": "fld_c7545358ded148be9185d8c839d70b25",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "{{ base_url  }}/users",
+      "_type": "request"
+    },
+    {
+      "_id": "req_80df0b7bcdbc4acf905e4bc1d9e09053",
+      "authentication": {
+        "disabled": false,
+        "token": "{{ token }}",
+        "type": "bearer"
+      },
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"barberId\": \"c3f61cd1-b8b5-48fc-8f94-694dfe669718\",\n\t\"date\": \"{% now 'iso-8601', '' %}\"\n}"
+      },
+      "created": 1595302249242,
+      "description": "",
+      "headers": [
+        {
+          "id": "pair_d4828e01eb544234b492bdf93dc2e2f7",
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1595517637336.375,
+      "method": "POST",
+      "modified": 1595605419787,
+      "name": "Create Appointment",
+      "parameters": [],
+      "parentId": "fld_9ea944a3a6c44593948beae9a2f6b06a",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "{{ base_url  }}/appointments",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_9ea944a3a6c44593948beae9a2f6b06a",
+      "created": 1595548407007,
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1595548407007,
+      "modified": 1595548407007,
+      "name": "Appointments",
+      "parentId": "wrk_3f24327018314df984ea783ed47bf7ca",
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_6fbdf5e6f0e74b08bc6874938e60b47b",
+      "authentication": {
+        "disabled": false,
+        "token": "{{ token }}",
+        "type": "bearer"
+      },
+      "body": {
+        "mimeType": "application/json",
+        "text": ""
+      },
+      "created": 1595306301438,
+      "description": "",
+      "headers": [
+        {
+          "id": "pair_d4828e01eb544234b492bdf93dc2e2f7",
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1595517637286.375,
+      "method": "GET",
+      "modified": 1595562632307,
+      "name": "List Appointments",
+      "parameters": [],
+      "parentId": "fld_9ea944a3a6c44593948beae9a2f6b06a",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "{{ base_url  }}/appointments",
+      "_type": "request"
+    },
+    {
+      "_id": "env_934cf7e35890f85142e564738ba05f6dd00b11f9",
+      "color": null,
+      "created": 1595301662942,
+      "data": {},
+      "dataPropertyOrder": null,
+      "isPrivate": false,
+      "metaSortKey": 1595301662943,
+      "modified": 1595301662942,
+      "name": "Base Environment",
+      "parentId": "wrk_3f24327018314df984ea783ed47bf7ca",
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_934cf7e35890f85142e564738ba05f6dd00b11f9",
+      "cookies": [],
+      "created": 1595301662954,
+      "modified": 1595301662954,
+      "name": "Default Jar",
+      "parentId": "wrk_3f24327018314df984ea783ed47bf7ca",
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_b99c88a46195453bb137a4487a400676",
+      "contentType": "yaml",
+      "contents": "",
+      "created": 1596225325074,
+      "fileName": "Barbershop",
+      "modified": 1596225325074,
+      "parentId": "wrk_3f24327018314df984ea783ed47bf7ca",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "env_3d4a401106644463a3edc1488adb9e6f",
+      "color": "#79cb69",
+      "created": 1595302063517,
+      "data": {
+        "base_url": "http://localhost:3333",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDA4MDUyOTAsImV4cCI6MTYwMDg5MTY5MCwic3ViIjoiNzcyNmNhM2MtMzk2Mi00NDc2LWJhODctYThkMTY0Zjc0MjczIn0.-NJSP-kf0vcFD-pDza5ln3xGEPGGCHLxkX1fnIukoN8"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "base_url",
+          "token"
+        ]
+      },
+      "isPrivate": false,
+      "metaSortKey": 1595302063518,
+      "modified": 1600805303347,
+      "name": "dev",
+      "parentId": "env_934cf7e35890f85142e564738ba05f6dd00b11f9",
+      "_type": "environment"
+    },
+    {
+      "_id": "env_982b948571b54df4b73813f4a9f25cd7",
+      "color": "#cb6969",
+      "created": 1595302141688,
+      "data": {
+        "base_url": "http://barbershop",
+        "token": "xxx"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "base_url",
+          "token"
+        ]
+      },
+      "isPrivate": false,
+      "metaSortKey": 1595302141688,
+      "modified": 1595555823022,
+      "name": "prod",
+      "parentId": "env_934cf7e35890f85142e564738ba05f6dd00b11f9",
+      "_type": "environment"
+    }
+  ]
+}
