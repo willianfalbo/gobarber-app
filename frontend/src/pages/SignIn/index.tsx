@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers';
 import * as yup from 'yup';
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
 
-import { AuthContext } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 
 import { Container, Content, Background } from './styles';
 import logoImg from '../../assets/logo.svg';
@@ -31,7 +31,7 @@ const SignIn: React.FC = () => {
     shouldFocusError: false,
   });
 
-  const { user, signIn } = useContext(AuthContext);
+  const { signIn } = useAuth();
 
   const onSubmit = (form: SignInForm) => {
     signIn({

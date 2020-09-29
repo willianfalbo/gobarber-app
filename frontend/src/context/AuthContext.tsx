@@ -1,5 +1,5 @@
-import React, { createContext, useCallback, useState } from 'react';
-import api from '../utils/apiClient';
+import React, { createContext, useCallback, useContext, useState } from 'react';
+import apiClient from '../utils/apiClient';
 
 interface SignInCredentials {
   email: string;
@@ -23,9 +23,7 @@ interface AuthContextData {
   signIn(credentials: SignInCredentials): Promise<void>;
 }
 
-export const AuthContext = createContext<AuthContextData>(
-  {} as AuthContextData,
-);
+const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
   // this state will be execute every time the page loads
@@ -44,9 +42,9 @@ export const AuthProvider: React.FC = ({ children }) => {
     return {} as SignInResult;
   });
 
-  // this callback will be used in the signin page
+  // this callback will be used in the SignIn Page
   const signIn = useCallback(async ({ email, password }) => {
-    const response = await api.post<SignInResult>('/auth/login', {
+    const response = await apiClient.post<SignInResult>('/auth/login', {
       email,
       password,
     });
@@ -64,3 +62,11 @@ export const AuthProvider: React.FC = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
+export function useAuth(): AuthContextData {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('AuthProvider must be placed as component before useAuth');
+  }
+  return context;
+}
