@@ -31,7 +31,7 @@ const SignIn: React.FC = () => {
     shouldFocusError: false,
   });
 
-  const { signIn } = useContext(AuthContext);
+  const { user, signIn } = useContext(AuthContext);
 
   const onSubmit = (form: SignInForm) => {
     signIn({
