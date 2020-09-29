@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers';
 import * as yup from 'yup';
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
 
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 
 import { Container, Content, Background } from './styles';
 import logoImg from '../../assets/logo.svg';
@@ -42,6 +42,7 @@ const SignIn: React.FC = () => {
 
   return (
     <Container>
+      <Background />
       <Content>
         <img src={logoImg} alt="Barbershop" />
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -69,7 +70,6 @@ const SignIn: React.FC = () => {
           Create an account
         </a>
       </Content>
-      <Background />
     </Container>
   );
 };

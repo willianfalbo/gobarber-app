@@ -21,6 +21,7 @@ interface SignInResult {
 interface AuthContextData {
   user: User;
   signIn(credentials: SignInCredentials): Promise<void>;
+  signOut(): void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -42,7 +43,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     return {} as SignInResult;
   });
 
-  // this callback will be used in the SignIn Page
+  // this callback will be used on SignIn Page
   const signIn = useCallback(async ({ email, password }) => {
     const response = await apiClient.post<SignInResult>('/auth/login', {
       email,
@@ -56,8 +57,16 @@ export const AuthProvider: React.FC = ({ children }) => {
     setData({ token, user });
   }, []);
 
+  // this callback will be used to sign user out
+  const signOut = useCallback(() => {
+    localStorage.removeItem('@barbershop:token');
+    localStorage.removeItem('@barbershop:user');
+
+    setData({} as SignInResult);
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ user: data.user, signIn }}>
+    <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
