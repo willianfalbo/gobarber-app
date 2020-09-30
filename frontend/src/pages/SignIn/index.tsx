@@ -1,9 +1,9 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { yupResolver } from '@hookform/resolvers';
-import * as yup from 'yup';
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
+import * as yup from 'yup';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers';
 
 import { useAuth } from '../../contexts/AuthContext';
 

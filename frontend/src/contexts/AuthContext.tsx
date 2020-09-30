@@ -57,6 +57,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       localStorage.setItem('@barbershop:user', JSON.stringify(user));
 
       setData({ token, user });
+      toast.success(`Welcome, ${user.name}.`);
     } catch (err) {
       toast.error(err?.response?.data?.message || 'An error occurred');
     }

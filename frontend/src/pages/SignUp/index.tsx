@@ -1,14 +1,16 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
-import { yupResolver } from '@hookform/resolvers';
-import * as yup from 'yup';
-
+import { Link, useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { FiArrowLeft, FiMail, FiUser, FiLock } from 'react-icons/fi';
+import * as yup from 'yup';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers';
+
 import { Container, Content, Background } from './styles';
 import logoImg from '../../assets/logo.svg';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import apiClient from '../../utils/apiClient';
 
 interface SignUpForm {
   name: string;
@@ -29,7 +31,17 @@ const SignUp: React.FC = () => {
     shouldFocusError: false,
   });
 
-  const onSubmit = (data: SignUpForm) => console.log(data);
+  const history = useHistory();
+
+  const onSubmit = async (data: SignUpForm) => {
+    try {
+      await apiClient.post('/users', data);
+      toast.success('You were registered! Please sign in.');
+      history.push('/');
+    } catch (err) {
+      toast.error(err?.response?.data?.message || 'An error occurred');
+    }
+  };
 
   return (
     <Container>
