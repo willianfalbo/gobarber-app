@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers';
 import * as yup from 'yup';
 
@@ -64,10 +65,10 @@ const SignUp: React.FC = () => {
           />
           <Button type="submit">Register</Button>
         </form>
-        <a href="#sign-in">
+        <Link to="/">
           <FiArrowLeft />
-          Go back to sign in.
-        </a>
+          Already have an account? Sign In.
+        </Link>
       </Content>
     </Container>
   );

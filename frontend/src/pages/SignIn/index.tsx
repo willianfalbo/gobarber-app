@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers';
 import * as yup from 'yup';
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
@@ -61,13 +62,13 @@ const SignIn: React.FC = () => {
             register={register}
             error={errors?.password?.message}
           />
-          <Button type="submit">SignIn</Button>
-          <a href="#forgot-password">Forgot password?</a>
+          <Button type="submit">Sign In</Button>
+          <Link to="/forgot-password">Forgot password?</Link>
         </form>
-        <a href="#create-account">
+        <Link to="/register">
           <FiLogIn />
           Create an account
-        </a>
+        </Link>
       </Content>
     </Container>
   );
