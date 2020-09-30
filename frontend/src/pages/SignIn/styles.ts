@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 import signInBackgroundImg from '../../assets/sign-in-background.png';
 
@@ -6,6 +6,22 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   align-items: stretch;
+
+  /* to apply image opacity without affecting other elements */
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3)),
+    url(${signInBackgroundImg}) no-repeat center;
+  background-size: cover;
+`;
+
+const animationFromLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 `;
 
 export const Content = styled.div`
@@ -16,10 +32,8 @@ export const Content = styled.div`
   place-content: center;
   width: 100%;
 
-  /* to apply image opacity without affecting other elements */
-  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3)),
-    url(${signInBackgroundImg}) no-repeat center;
-  background-size: cover;
+  /* to create animation */
+  animation: ${animationFromLeft} 0.5s;
 
   form {
     margin: 80px 0;

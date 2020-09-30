@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 import signUpBackgroundImg from '../../assets/sign-up-background.png';
 
@@ -6,6 +6,17 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   align-items: stretch;
+`;
+
+const animationFromTop = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 `;
 
 export const Content = styled.div`
@@ -16,6 +27,9 @@ export const Content = styled.div`
   place-content: center;
   width: 100%;
   max-width: 700px;
+
+  /* to create animation */
+  animation: ${animationFromTop} 0.5s;
 
   form {
     margin: 80px 0;
