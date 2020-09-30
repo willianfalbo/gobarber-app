@@ -31,7 +31,12 @@ const Input: React.FC<InputProps> = ({
   }, []);
 
   return (
-    <Container isFocused={isFocused} isDirty={isDirty} hasError={!!error}>
+    <Container
+      className="input-container"
+      isFocused={isFocused}
+      isDirty={isDirty}
+      hasError={!!error}
+    >
       {Icon && <Icon size={20} />}
       <input
         ref={register}

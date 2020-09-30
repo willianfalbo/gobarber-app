@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
-import signinBackgroundImg from '../../assets/signin-background.png';
+import signInBackgroundImg from '../../assets/sign-in-background.png';
 
 export const Container = styled.div`
   height: 100vh;
@@ -15,7 +15,11 @@ export const Content = styled.div`
 
   place-content: center;
   width: 100%;
-  max-width: 700px;
+
+  /* to apply image opacity without affecting other elements */
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3)),
+    url(${signInBackgroundImg}) no-repeat center;
+  background-size: cover;
 
   form {
     margin: 80px 0;
@@ -37,6 +41,16 @@ export const Content = styled.div`
         color: ${shade(0.2, '#f4ede8')};
       }
     }
+
+    /* to customize input on this page only  */
+    .input-container {
+      background: rgba(0, 0, 0, 0.6);
+      border-color: #999;
+
+      input {
+        color: #fff;
+      }
+    }
   }
 
   > a {
@@ -56,10 +70,4 @@ export const Content = styled.div`
       color: ${shade(0.2, '#ff9000')};
     }
   }
-`;
-
-export const Background = styled.div`
-  flex: 1;
-  background: url(${signinBackgroundImg}) no-repeat center;
-  background-size: cover;
 `;

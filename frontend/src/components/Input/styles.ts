@@ -22,23 +22,23 @@ export const Container = styled.div<ContainerProps>`
   ${props =>
     props.isFocused &&
     css`
-      border-color: #ff9000;
-      color: #ff9000;
+      border-color: #ff9000 !important;
+      color: #ff9000 !important;
     `}
 
   /* when input is dirty */
   ${props =>
     props.isDirty &&
     css`
-      color: #ff9000;
+      color: #ff9000 !important;
     `}
 
   /* when input has error */
   ${props =>
     props.hasError &&
     css`
-      border-color: #c53030;
-      color: #c53030;
+      border-color: #c53030 !important;
+      color: #c53030 !important;
     `}
 
   display: flex;
