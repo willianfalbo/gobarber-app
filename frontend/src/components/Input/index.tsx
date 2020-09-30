@@ -11,12 +11,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string;
 }
 
-const Input: React.FC<InputProps> = ({
-  icon: Icon,
-  register,
-  error,
-  ...rest
-}) => {
+const Input: React.FC<InputProps> = ({ icon: Icon, register, error, ...rest }) => {
   const [isFocused, setIsFocused] = useState(false);
   // const [isDirty, setIsDirty] = useState(false);
   const isDirty = false;

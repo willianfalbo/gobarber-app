@@ -19,8 +19,8 @@ const Routes: React.FC<RouteProps> = ({ isLoggedIn = false, component: Component
         return isLoggedIn === !!user ? (
           <Component />
         ) : (
-            <Redirect to={{ pathname: isLoggedIn ? '/' : '/dashboard', state: { from: location } }} />
-          );
+          <Redirect to={{ pathname: isLoggedIn ? '/' : '/dashboard', state: { from: location } }} />
+        );
       }}
     />
   );

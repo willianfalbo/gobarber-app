@@ -18,10 +18,7 @@ interface SignInForm {
 }
 
 const schema = yup.object().shape({
-  email: yup
-    .string()
-    .required('Email is a required field')
-    .email('Must be a valid email'),
+  email: yup.string().required('Email is a required field').email('Must be a valid email'),
   password: yup.string().min(6, 'At least 6 characters'),
 });
 
