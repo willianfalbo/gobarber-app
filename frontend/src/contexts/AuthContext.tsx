@@ -1,4 +1,5 @@
 import React, { createContext, useCallback, useContext, useState } from 'react';
+import { toast } from 'react-toastify';
 import apiClient from '../utils/apiClient';
 
 interface SignInCredentials {
@@ -45,16 +46,20 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   // this callback will be used on SignIn Page
   const signIn = useCallback(async ({ email, password }) => {
-    const response = await apiClient.post<SignInResult>('/auth/login', {
-      email,
-      password,
-    });
+    try {
+      const response = await apiClient.post<SignInResult>('/auth/login', {
+        email,
+        password,
+      });
 
-    const { user, token } = response.data;
-    localStorage.setItem('@barbershop:token', token);
-    localStorage.setItem('@barbershop:user', JSON.stringify(user));
+      const { user, token } = response.data;
+      localStorage.setItem('@barbershop:token', token);
+      localStorage.setItem('@barbershop:user', JSON.stringify(user));
 
-    setData({ token, user });
+      setData({ token, user });
+    } catch (err) {
+      toast.error(err?.response?.data?.message || 'An error occurred');
+    }
   }, []);
 
   // this callback will be used to sign user out
