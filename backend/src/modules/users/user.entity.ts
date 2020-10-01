@@ -1,8 +1,8 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import CommonFields from './support/common.model';
+import BaseEntity from '@shared/base.entity';
 
 @Entity('users')
-class User extends CommonFields {
+class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

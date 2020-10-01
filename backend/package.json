@@ -6,10 +6,10 @@
   "scripts": {
     "build": "tsc",
     "prestart:dev": "yarn migration:run",
-    "watch": "ts-node-dev --transpile-only --ignore node_modules src/server.ts",
-    "watch:debug": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
+    "watch": "ts-node-dev -r tsconfig-paths/register --transpile-only --ignore node_modules src/app.ts",
+    "watch:debug": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/app.ts",
     "docker:db": "docker-compose up --build",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
+    "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "migration:add": "yarn typeorm migration:create -n ",
     "migration:run": "yarn typeorm migration:run",
     "migration:revert": "yarn typeorm migration:revert"
@@ -20,6 +20,7 @@
     "date-fns": "^2.15.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
+    "http-status-codes": "^2.1.4",
     "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.2",
     "pg": "^8.3.0",
@@ -41,6 +42,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "prettier": "^2.0.5",
     "ts-node-dev": "^1.0.0-pre.52",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^3.9.7"
   }
 }

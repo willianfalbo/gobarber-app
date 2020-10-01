@@ -5,11 +5,11 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import CommonFields from './support/common.model';
-import User from './user.model';
+import BaseEntity from '@shared/base.entity';
+import User from '../users/user.entity';
 
 @Entity('appointments')
-class Appointment extends CommonFields {
+class Appointment extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

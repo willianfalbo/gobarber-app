@@ -1,6 +1,6 @@
 import { CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
-class CommonFields {
+class BaseEntity {
   @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
   cratedAt: Date;
 
@@ -8,4 +8,4 @@ class CommonFields {
   updatedAt: Date;
 }
 
-export default CommonFields;
+export default BaseEntity;

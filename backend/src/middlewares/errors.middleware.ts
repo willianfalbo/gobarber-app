@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import AppError from '../models/support/app-error.model';
+import HttpException from '../modules/shared/http-exception.model';
 
 function errorHandler(
   err: Error,
@@ -7,14 +7,14 @@ function errorHandler(
   res: Response,
   next: NextFunction,
 ): any {
-  if (err instanceof AppError) {
+  console.error(err);
+
+  if (err instanceof HttpException) {
     return res.status(err.statusCode).json({
       status: 'Error',
       message: err.message,
     });
   }
-
-  console.error(err);
 
   return res.status(500).json({
     status: 'Error',

@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
-import authConfig from '../config/auth.config';
-import AppError from '../models/support/app-error.model';
+import { StatusCodes } from 'http-status-codes';
+import authConfig from '@config/auth.config';
+import HttpException from '@shared/http-exception.model';
 
 interface TokenPayload {
   iat: number;
@@ -13,7 +14,7 @@ function jwtAuth(req: Request, res: Response, next: NextFunction): void {
   const { authorization } = req.headers;
 
   if (!authorization) {
-    throw new AppError('Missing JWT Token', 401);
+    throw new HttpException('Missing JWT Token', StatusCodes.UNAUTHORIZED);
   }
 
   const [, token] = authorization.split(' ');
@@ -26,7 +27,7 @@ function jwtAuth(req: Request, res: Response, next: NextFunction): void {
 
     return next();
   } catch {
-    throw new AppError('Invalid JWT token', 401);
+    throw new HttpException('Invalid JWT token', StatusCodes.UNAUTHORIZED);
   }
 }
 

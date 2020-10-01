@@ -1,9 +1,10 @@
 import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
-import User from '../models/user.model';
-import authConfig from '../config/auth.config';
-import AppError from '../models/support/app-error.model';
+import { StatusCodes } from 'http-status-codes';
+import authConfig from '@config/auth.config';
+import HttpException from '@shared/http-exception.model';
+import User from '../../users/user.entity';
 
 interface Request {
   email: string;
@@ -21,12 +22,12 @@ class AuthenticateUserService {
 
     const user = await repository.findOne({ where: { email } });
     if (!user) {
-      throw new AppError('Invalid credentials', 401);
+      throw new HttpException('Invalid credentials', StatusCodes.UNAUTHORIZED);
     }
 
     const passwordMatches = await compare(password, user.password);
     if (!passwordMatches) {
-      throw new AppError('Invalid credentials', 401);
+      throw new HttpException('Invalid credentials', StatusCodes.UNAUTHORIZED);
     }
 
     const token = sign({}, authConfig.secret, {
