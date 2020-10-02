@@ -3,7 +3,7 @@ import BaseEntity from '@shared/base.entity';
 import { User } from '../users/user.entity';
 
 @Entity('appointments')
-class Appointment extends BaseEntity {
+export class Appointment extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -16,6 +16,11 @@ class Appointment extends BaseEntity {
 
   @Column({ type: 'timestamp with time zone' })
   date: Date;
-}
 
-export default Appointment;
+  @Column({ name: 'customer_id' })
+  customerId: string;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'customer_id' })
+  customer: User;
+}
