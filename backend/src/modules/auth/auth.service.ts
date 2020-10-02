@@ -1,27 +1,18 @@
-import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { StatusCodes } from 'http-status-codes';
+import { container, injectable } from 'tsyringe';
 import authConfig from '@config/auth.config';
 import HttpException from '@shared/http-exception.model';
-import { User } from '../../users/user.entity';
+import { User } from '@modules/users/user.entity';
+import { UsersService } from '@modules/users/users.service';
 
-interface Request {
-  email: string;
-  password: string;
-}
+@injectable()
+export class AuthService {
+  public async login({ email, password }: User): Promise<{ user: User; token: string }> {
+    const usersService = container.resolve(UsersService);
 
-interface Response {
-  user: User;
-  token: string;
-}
-
-class AuthenticateUserService {
-  public async execute({ email, password }: Request): Promise<Response> {
-    const repository = getRepository(User);
-
-    // TODO: Refactor this point to use findByEmail instead
-    const user = await repository.findOne({ where: { email } });
+    const user = await usersService.findByEmail({ email } as User, false);
     if (!user) {
       throw new HttpException('Invalid credentials', StatusCodes.UNAUTHORIZED);
     }
@@ -39,5 +30,3 @@ class AuthenticateUserService {
     return { user, token };
   }
 }
-
-export default AuthenticateUserService;

@@ -18,7 +18,6 @@ export class AppointmentsService implements IAppointmentsService {
   public async create({ barberId, date, customerId }: Appointment): Promise<Appointment> {
     const userService = container.resolve(UsersService);
     const barber = await userService.findById({ id: barberId } as User, false);
-    console.log('barber', barber);
     if (!barber) {
       throw new HttpException('Barber not found.', StatusCodes.NOT_FOUND);
     }

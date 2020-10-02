@@ -1,14 +1,9 @@
 import { Router } from 'express';
-import AuthenticateUserService from './services/auth-user.service';
+import { AuthController } from './auth.controller';
 
 const router = Router();
+const controller = new AuthController();
 
-router.post('/login', async (req, res) => {
-  const { email, password } = req.body;
-  const service = new AuthenticateUserService();
-  const { user, token } = await service.execute({ email, password });
-  delete user.password;
-  return res.json({ user, token });
-});
+router.post('/login', controller.login);
 
 export default router;

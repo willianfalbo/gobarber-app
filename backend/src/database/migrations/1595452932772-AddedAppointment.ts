@@ -1,8 +1,7 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 import { defaultId, defaultTimestamps } from '../common-fields';
 
-export default class AddedAppointment1595452932772
-  implements MigrationInterface {
+export default class AddedAppointment1595452932772 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({

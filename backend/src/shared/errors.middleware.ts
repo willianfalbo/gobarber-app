@@ -1,12 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
-import HttpException from '../modules/shared/http-exception.model';
+import HttpException from './http-exception.model';
 
-function errorHandler(
-  err: Error,
-  req: Request,
-  res: Response,
-  next: NextFunction,
-): any {
+function errorHandler(err: Error, req: Request, res: Response, next: NextFunction): any {
   console.error(err);
 
   if (err instanceof HttpException) {
