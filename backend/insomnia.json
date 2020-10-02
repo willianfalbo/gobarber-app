@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2020-09-29T03:37:24.193Z",
+  "__export_date": "2020-10-02T00:58:13.495Z",
   "__export_source": "insomnia.desktop.app:v2020.3.3",
   "resources": [
     {
@@ -23,7 +23,7 @@
       "isPrivate": false,
       "metaSortKey": -1595550678202,
       "method": "POST",
-      "modified": 1600805289148,
+      "modified": 1601600073125,
       "name": "Login",
       "parameters": [],
       "parentId": "fld_92f9925ecca4415bbb57ec88cb91cb1a",
@@ -70,6 +70,7 @@
         "params": [
           {
             "description": "",
+            "disabled": false,
             "fileName": "/home/willian/Pictures/willian-profile.jpeg",
             "id": "pair_5007d564fc6d4ea98590f16b1cc05f09",
             "name": "file",
@@ -90,7 +91,7 @@
       "isPrivate": false,
       "metaSortKey": -1595562583830,
       "method": "PATCH",
-      "modified": 1600805276833,
+      "modified": 1601600235657,
       "name": "Update Avatar",
       "parameters": [],
       "parentId": "fld_c7545358ded148be9185d8c839d70b25",
@@ -134,7 +135,7 @@
       "isPrivate": false,
       "metaSortKey": -1595548410425.5,
       "method": "POST",
-      "modified": 1600805224316,
+      "modified": 1601600180524,
       "name": "Create User",
       "parameters": [],
       "parentId": "fld_c7545358ded148be9185d8c839d70b25",
@@ -156,7 +157,7 @@
       },
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"barberId\": \"c3f61cd1-b8b5-48fc-8f94-694dfe669718\",\n\t\"date\": \"{% now 'iso-8601', '' %}\"\n}"
+        "text": "{\n\t\"barberId\": \"9582496e-de3d-4b0d-8d26-910f48badac8\",\n\t\"date\": \"{% now 'iso-8601', '' %}\"\n}"
       },
       "created": 1595302249242,
       "description": "",
@@ -170,7 +171,7 @@
       "isPrivate": false,
       "metaSortKey": -1595517637336.375,
       "method": "POST",
-      "modified": 1595605419787,
+      "modified": 1601590081432,
       "name": "Create Appointment",
       "parameters": [],
       "parentId": "fld_9ea944a3a6c44593948beae9a2f6b06a",
@@ -269,7 +270,7 @@
       "created": 1595302063517,
       "data": {
         "base_url": "http://localhost:3333",
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDA4MDUyOTAsImV4cCI6MTYwMDg5MTY5MCwic3ViIjoiNzcyNmNhM2MtMzk2Mi00NDc2LWJhODctYThkMTY0Zjc0MjczIn0.-NJSP-kf0vcFD-pDza5ln3xGEPGGCHLxkX1fnIukoN8"
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDE2MDAyMDAsImV4cCI6MTYwMTY4NjYwMCwic3ViIjoiMGQxMWVlNzMtZmEwZC00ZjU3LWEwZGItZmFkMTEwZDJkNDUzIn0.m_OEkY48qKsE254cvBKJNVczZ72uBZfxJNJc8AvTrss"
       },
       "dataPropertyOrder": {
         "&": [
@@ -279,7 +280,7 @@
       },
       "isPrivate": false,
       "metaSortKey": 1595302063518,
-      "modified": 1600805303347,
+      "modified": 1601600209495,
       "name": "dev",
       "parentId": "env_934cf7e35890f85142e564738ba05f6dd00b11f9",
       "_type": "environment"

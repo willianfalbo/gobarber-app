@@ -1,12 +1,6 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  ManyToOne,
-  JoinColumn,
-} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 import BaseEntity from '@shared/base.entity';
-import User from '../users/user.entity';
+import { User } from '../users/user.entity';
 
 @Entity('appointments')
 class Appointment extends BaseEntity {

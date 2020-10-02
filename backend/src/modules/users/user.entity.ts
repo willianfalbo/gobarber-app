@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import BaseEntity from '@shared/base.entity';
 
 @Entity('users')
-class User extends BaseEntity {
+export class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -18,5 +18,3 @@ class User extends BaseEntity {
   @Column({ name: 'avatar_filename', nullable: true })
   avatarFilename: string;
 }
-
-export default User;

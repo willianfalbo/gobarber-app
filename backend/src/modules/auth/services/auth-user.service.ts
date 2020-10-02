@@ -4,7 +4,7 @@ import { sign } from 'jsonwebtoken';
 import { StatusCodes } from 'http-status-codes';
 import authConfig from '@config/auth.config';
 import HttpException from '@shared/http-exception.model';
-import User from '../../users/user.entity';
+import { User } from '../../users/user.entity';
 
 interface Request {
   email: string;
@@ -20,6 +20,7 @@ class AuthenticateUserService {
   public async execute({ email, password }: Request): Promise<Response> {
     const repository = getRepository(User);
 
+    // TODO: Refactor this point to use findByEmail instead
     const user = await repository.findOne({ where: { email } });
     if (!user) {
       throw new HttpException('Invalid credentials', StatusCodes.UNAUTHORIZED);
